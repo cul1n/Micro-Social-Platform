@@ -1,0 +1,15 @@
+﻿@using Microsoft.AspNet.Identity;
+@{ ViewBag.Title = "Home Page"; }
+
+@if (User.Identity.IsAuthenticated)
+{
+    <h2>Hello: @ViewBag.User.Email</h2>
+    <a href="/Posts/Index">Check your feed</a>
+    <a href="/Manage/Index"> Manage </a>
+
+}
+else
+{
+    <h2><a href="/Account/Login">Please, Log In:</a></h2>
+
+}

@@ -1,0 +1,26 @@
+﻿@model MicroSocialPlatform.Models.Post
+@{
+    ViewBag.Title = "New";
+}
+@if (User.Identity.IsAuthenticated == true) {
+    using (Html.BeginForm(actionName: "New", controllerName: "Posts"))
+    {
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <label>Add a post</label>
+            </div>
+            <div class="panel-body">
+                @Html.Label("Content", "Content:")
+                @Html.TextArea("Content", null, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Content, "", new { @class = "text-danger " })
+                <input type="hidden" name="Date" value="@DateTime.Now" />
+                <br />
+                <button type="submit" class="btn btn-primary">Post</button>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <a href="/Account/Login">Log in to add a post</a>
+}
